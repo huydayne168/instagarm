@@ -7,6 +7,11 @@ const searchBtn = body.querySelector(".nav-list__item.search");
 const notificationBtn = body.querySelector(".nav-list__item.notification");
 const searchBar = body.querySelector(".container-search-bar");
 const notificationBar = body.querySelector(".container-notification-bar");
+const newPostBtn = body.querySelector(".nav-list__item.new-post");
+const newModal = body.querySelector(".new-modal");
+const newModalContainer = body.querySelector(".new-modal .container");
+
+const newModalClose = body.querySelector(".new-modal .close-btn");
 
 const postList = body.querySelector(".middle .post-list");
 const storyList = body.querySelector(".middle .story-list");
@@ -49,9 +54,28 @@ let navFunction = {
         });
     },
 
+    newPost: function () {
+        newPostBtn.addEventListener("click", function () {
+            newModal.classList.add("is-show");
+        });
+
+        newModalClose.addEventListener("click", function () {
+            newModal.classList.remove("is-show");
+        });
+
+        newModal.addEventListener("click", function () {
+            newModal.classList.remove("is-show");
+        });
+
+        newModalContainer.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    },
+
     start: function () {
         this.searching();
         this.notification();
+        this.newPost();
     },
 };
 
